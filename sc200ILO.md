@@ -1,4 +1,4 @@
-# SC-200 Intended Learning Outcomes
+# SC-200 Intended Learning Outcomes (from <https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/sc-200>)
 
 ## Manage a Security Operations Environment (20–25%)
 
