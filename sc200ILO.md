@@ -50,8 +50,22 @@
 ### Manage Assets and Environments
 
 - Configure and manage device groups, permissions, and automation levels in Microsoft Defender for Endpoint
+  - <https://learn.microsoft.com/en-us/defender-endpoint/machine-groups>
+  - <https://learn.microsoft.com/en-us/defender-endpoint/configure-automated-investigations-remediation>
+  - **TLDR**
+    - Goto **Settings > Permissions > Device Groups > Add device group**.
+    - Specify name, automation list, include members section (what devices to add).
 - Identify and remediate unmanaged devices in Microsoft Defender for Endpoint
+  - <https://learn.microsoft.com/en-us/defender-endpoint/device-discovery>
+  - **TLDR**
+    - Only discovers devices connected to the corporate network.
+    - Onboarded device use either Basic (passive) or Standard (active) device discovery.
+    - Network devices are not managed by a sensor, we use onboarded device to scan network ranges instead.
+    - Basically, detect devices and onboard them!
 - Manage resources by using Azure Arc
+  - <https://learn.microsoft.com/en-us/azure/azure-arc/overview>
+  - **TLDR**
+    - ...
 - Connect environments to Microsoft Defender for Cloud (by using multi-cloud management)
 - Discover and remediate unprotected resources by using Defender for Cloud
 - Identify and remediate devices at risk by using Microsoft Defender Vulnerability Management
