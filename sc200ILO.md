@@ -65,8 +65,18 @@
 - Manage resources by using Azure Arc
   - <https://learn.microsoft.com/en-us/azure/azure-arc/overview>
   - **TLDR**
-    - ...
+    - Basically, Azure Arc enables centralized control of non-Azure and on-prem. resources into the Azure Resource Manager.
+      - Servers, Kubernetes, SQL and virtual machines.
 - Connect environments to Microsoft Defender for Cloud (by using multi-cloud management)
+  - <https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-cloud-security-posture-management?source=recommendations>
+  - **TLDR**
+    - Asset Inventory provides an overview of vulnerabilities in cloud assets.
+      - Can also perform asset discovery through Asset management options.
+    - Use Asset Inventory:
+      - Goto **Inventory > Filter > relevant options > Search**.
+    - Auto Provisioning: Auto-install feature. 
+      - Enable in Log Analytics agent.
+        - Goto **Environment settings > relevant sub. > Auto provisioning page, On.**
 - Discover and remediate unprotected resources by using Defender for Cloud
 - Identify and remediate devices at risk by using Microsoft Defender Vulnerability Management
 
@@ -176,3 +186,7 @@
 - Activate and customize Microsoft Sentinel workbook templates
 - Create custom workbooks that include KQL
 - Configure visualizations
+
+
+## Other useful links:
+- <https://github.com/OneEqualsOne/Azure-Learning-Materials/blob/main/SC-200/SC-200%20Notes.md>
