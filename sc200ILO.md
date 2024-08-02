@@ -136,10 +136,44 @@
 ### Ingest Data Sources in Microsoft Sentinel
 
 - Identify data sources to be ingested for Microsoft Sentinel
+  - <https://learn.microsoft.com/en-us/training/modules/connect-data-to-azure-sentinel-with-data-connectors/2-ingest-log-data-with-data-connectors>
+  - **TLDR**
+    - Connect to Sentinel Data Connectors.
+      - Included in Content Hub Solutions in Sentinel.
+    - Data sources:
+      - XDR (Identity/Endpoint/Office 365/Cloud Apps)
+      - Azure Services (Entra ID/Activity/Entra ID Protection/DDoS etc.)
+      - Custom connectors through Log Analytics Data Collector API.
+      - Send any logs through Sentinel Logstash plugin.
+      - Common Event Format (CEF) (Industry-standard).
+      - Syslog connector (Linux).
+    - Syslog and CEF requires host to be deployed in dedicated Azure VM.
 - Implement and use Content hub solutions
+  - <https://learn.microsoft.com/en-us/azure/sentinel/sentinel-solutions-deploy?tabs=azure-portal>
+  - **TLDR**
+    - All included in the **Sentinel > Content management > Content hub**
+    - Has many pre-defines contents that can be installed using auto-provisioning.
 - Configure and use Microsoft connectors for Azure resources, including Azure Policy and diagnostic settings
+  - <https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/>
+  - **TLDR**
+    - Done through Data Connectors.
+    - Activate Azure Activity (which uses Azure Policy):
+      - Goto **Sentinel > Content Management > Content Hub > Type Azure Activity > Select Azure Activity > Select Install > Select Azure Activity Data connector > Open connector page > In Instructions/Configuration > Connect your subscriptions.. Launch Azure Policy Assignment Wizard > In Basics select your Azure Sub. > In Parameters chose workspace > in Remediation > Create a remediation task > Finish**.
 - Configure bidirectional synchronization between Microsoft Sentinel and Microsoft Defender XDR
+  - <https://learn.microsoft.com/en-us/defender-xdr/microsoft-365-defender-integration-with-azure-sentinel>
+  - **TLDR**
+    - Add XDR Connector in Content Hub. This will make a bi-directional synchronization between Defender and XDR. 
 - Plan and configure Syslog and Common Event Format (CEF) event collections
+  - <https://learn.microsoft.com/en-us/training/modules/connect-common-event-format-logs-to-azure-sentinel/>
+  - **TDLR**
+    - Need Log Analytics agent on either host or Azure VM connected to host.
+    - Goto **Sentinel > Configuration > Data Connectors > Select CEF > Copy "sudo wget ..." command > run on Linux VM**.
+  - <https://learn.microsoft.com/en-us/training/modules/connect-syslog-data-sources-to-azure-sentinel/>
+  - **TLDR**
+    - Need Log Analytics agent on either host or Azure VM connected to host.
+    - Different steps to setup Syslog if its a Azure Linux VM or not.
+    - Configure Data Collection Rule (DCR):
+      - Goto **Data collection rule > Data Sources > Add data source > Config + Data sources + Linux syslog > Minimum log level > Save**.
 - Plan and configure collection of Windows Security events by using data collection rules, including Windows Event Forwarding (WEF)
 - Configure threat intelligence connectors, including platform, TAXII, upload indicators API, and MISP
 - Create custom log tables in the workspace to store ingested data
