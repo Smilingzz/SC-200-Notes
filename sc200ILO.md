@@ -74,19 +74,64 @@
       - Can also perform asset discovery through Asset management options.
     - Use Asset Inventory:
       - Goto **Inventory > Filter > relevant options > Search**.
-    - Auto Provisioning: Auto-install feature. 
+    - Auto Provisioning: Auto-install feature.
       - Enable in Log Analytics agent.
         - Goto **Environment settings > relevant sub. > Auto provisioning page, On.**
 - Discover and remediate unprotected resources by using Defender for Cloud
+  - **TODO: Read up on this!**
 - Identify and remediate devices at risk by using Microsoft Defender Vulnerability Management
+  - <https://learn.microsoft.com/en-us/training/modules/use-threat-vulnerability-management-microsoft-defender-for-endpoint/>
+  - **TLDR**
+    - Microsoft Defender Vulnerability Management is for Endpoint.
+    - Remediate software vulnerabilities:
+      - Goto **Vulnerability Mangement > Recommendations > Click software > Request remedaition > Go through Wizard**.
+    - In **Vulnerability Mangement > Inventories** We can see software etc. related to tenant. And request remediation through the Wizard.
 
 ### Design and Configure a Microsoft Sentinel Workspace
 
 - Plan a Microsoft Sentinel workspace
+  - <https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-workspaces/>
+  - **TLDR**
+    - Single tenant with single or regional workspaces OR multi-tenant?
+    - Configure Log Analytics.
+      - Then add Sentinel to the Log Analytics workspace.
 - Configure Microsoft Sentinel roles
+  - <https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-workspaces/5-understand-azure-sentinel-permissions-roles>
+  - **TLDR**
+    - Uses RBAC.
+    - Roles, Microsoft Sentinel.. Reader/Responder/Contributor/Automation Contributor.
+    - To work with Playbooks:
+      - Must have Logic App Contributor role.
+    - Give Sentinel permission to run Playbooks:
+      - Sentinel has special service account to run playbooks.
+      - Requires explicit permissions to the resource group of the playbook.
+    - Connect data sources to Sentinel:
+    - Must have User Write permissions.
+  - Guest users assign incidents:
+    - Needs Sentinel Responder and Directory Reader role.
+  - Create and delete Workbooks:
+    - Sentinel Contributor role OR (lesser role AND Azure Monitor role of Workbook Contributor).
 - Specify Azure RBAC roles for Microsoft Sentinel configuration
+  - <https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-workspaces/5-understand-azure-sentinel-permissions-roles>
+  - **TLDR**
+    - Entire roles for Azure exist:
+      - Azure.. Owner/Contributor/Reader.
+      - Log Analytics... Contributor/Reader.
 - Design and configure Microsoft Sentinel data storage, including log types and log retention
+  - <https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-workspaces/6-manage-azure-sentinel-settings>
+  - <https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-workspaces/7-configure-logs>
+  - **TLDR**
+    - Log retention from 30-730 days.
+    - Three primary log types:
+      - Analytics logs: Can perform KQL on them. Alerts supported.
+      - Basic logs: Specific data types, simple KQL, alerts not supported.
+      - Archive logs: Store up to 7 years, cannot query.
+    - Can configure logs: Goto **Sentinel Settings > Log Analytics portal > Tables > Manage table > do stuff > save**.
 - Manage multiple workspaces by using workspace manager and Azure Lighthouse
+  - <https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-workspaces/4-manage-workspaces-across-tenants-using-azure-lighthouse>
+  - **TLDR**
+    - Sentinel Workspace manager = manage multiple workspaces within one or more Azure tenants.
+    - Azure Lighthouse = Basically OAuth, can manage mutliple tenants with one account.
 
 ### Ingest Data Sources in Microsoft Sentinel
 
