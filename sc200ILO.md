@@ -162,7 +162,7 @@
 - Configure bidirectional synchronization between Microsoft Sentinel and Microsoft Defender XDR
   - <https://learn.microsoft.com/en-us/defender-xdr/microsoft-365-defender-integration-with-azure-sentinel>
   - **TLDR**
-    - Add XDR Connector in Content Hub. This will make a bi-directional synchronization between Defender and XDR. 
+    - Add XDR Connector in Content Hub. This will make a bi-directional synchronization between Defender and XDR.
 - Plan and configure Syslog and Common Event Format (CEF) event collections
   - <https://learn.microsoft.com/en-us/training/modules/connect-common-event-format-logs-to-azure-sentinel/>
   - **TDLR**
@@ -175,8 +175,27 @@
     - Configure Data Collection Rule (DCR):
       - Goto **Data collection rule > Data Sources > Add data source > Config + Data sources + Linux syslog > Minimum log level > Save**.
 - Plan and configure collection of Windows Security events by using data collection rules, including Windows Event Forwarding (WEF)
+  - <https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-rule-overview>
+  - <https://learn.microsoft.com/en-us/training/modules/connect-syslog-data-sources-to-azure-sentinel/>
+  - **TLDR**
+    - Uses the Azure Monitor pipeline.
+    - DCR is used in Azure Monitor to filter the ingested data.
+      - What data to collect, how to transform it (KQL) and where to send it.
 - Configure threat intelligence connectors, including platform, TAXII, upload indicators API, and MISP
+  - <https://learn.microsoft.com/en-us/training/modules/connect-threat-indicators-to-azure-sentinel/>
+  - **TLDR**
+    - TAXII threat connector (2.0/2.1)
+      - Goto **Data connectors > Threat intelligence - TAXII > Open connector >  Specify requirements > Add**.
+    - Threat Intelligence Connector
+      - Done through MS Graph Security API.
+      - We connect Sentinel to other TI platform.
+        - Register an app in Entra ID to get credentials.
+    - TI data can be accessed in ThreatIntelligenceIndicator.
 - Create custom log tables in the workspace to store ingested data
+  - <https://learn.microsoft.com/en-us/azure/sentinel/data-transformation>
+  - **TLDR**
+    - Log Analytics stores all data.
+    - With DCR we can create customized tables.
 
 ## Configure Protections and Detections (15–20%)
 
