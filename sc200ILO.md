@@ -202,6 +202,10 @@
 ### Configure Protections in Microsoft Defender Security Technologies
 
 - Configure policies for Microsoft Defender for Cloud Apps
+  - <https://learn.microsoft.com/en-us/training/modules/microsoft-cloud-app-security/>
+  - **TLDR**
+    - We can configure AC through the Conditional Access App Control.
+    - Entra ID AC integrated if used already.
 - Configure policies for Microsoft Defender for Office 365
 - Configure security policies for Microsoft Defender for Endpoints, including attack surface reduction (ASR) rules
 - Configure cloud workload protections in Microsoft Defender for Cloud
