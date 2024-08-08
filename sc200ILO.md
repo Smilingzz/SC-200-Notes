@@ -207,8 +207,34 @@
     - We can configure AC through the Conditional Access App Control.
     - Entra ID AC integrated if used already.
 - Configure policies for Microsoft Defender for Office 365
+  - <https://learn.microsoft.com/en-us/training/modules/m365-threat-remediate/>
+  - **TLDR**
+    - Configure policies in the Defender portal.
+    - Safe Attachments exist, protects against malware.
+    - Safe Links exists.
+    - Anti-phishing policies exist as well.
 - Configure security policies for Microsoft Defender for Endpoints, including attack surface reduction (ASR) rules
+  - <https://learn.microsoft.com/en-us/training/modules/implement-windows-10-security-enhancements-with-microsoft-defender-for-endpoint/3-enable-attack-surface-reduction-rules?ns-enrollment-type=learningpath&ns-enrollment-id=learn.wwl.sc-200-mitigate-threats-using-microsoft-defender-for-endpoint>
+  - <https://learn.microsoft.com/en-us/training/modules/deploy-microsoft-defender-for-endpoints-environment/6-create-manage-roles-for-role-based-access-control>
+  - <https://learn.microsoft.com/en-us/training/modules/deploy-microsoft-defender-for-endpoints-environment/7-configure-device-groups>
+  - <https://learn.microsoft.com/en-us/training/modules/configure-manage-automation-microsoft-defender-for-endpoint/4-configure-automated-investigation-remediation-capabilities?ns-enrollment-type=learningpath&ns-enrollment-id=learn.wwl.sc-200-mitigate-threats-using-microsoft-defender-for-endpoint>
+  - **TLDR**
+    - ASR
+      - Available for Windows OS machines.
+      - Config in Endpoint, Goto **Settings > Endpoint Security > ASR > config/create ASR**.
+      - Works well with group policies as well.
+    - RBAC
+      - As Sec/Global Admin Goto **Defender Portal > Settings > Endpoints > Permissions > Roles > Turn on roles > add items > add permissions to role > assign role to Entra Sec. group**.
+    - Device Groups
+      - As Sec/Global Admin Goto **Defender Portal > Settings > Endpoints > Permissions > Device Groups > Add device group > Config automation settings and rules to match devices to group > config users that can access device group (must be user assigned to RBAC group)**.
+    - Automated investigation and remediation exists.
+      - To turn on Goto **Settings > Endpoints > Advanced features > Turn on auto. investigation and remediation**.
 - Configure cloud workload protections in Microsoft Defender for Cloud
+  - <https://learn.microsoft.com/en-us/azure/defender-for-cloud/workload-protections-dashboard>
+  - **TLDR**
+    - Workload protections dashboard exists in Defender for Cloud.
+    - Basically, it logs data from cloud/hybrid/on-prem resources and makes it secure through the service.
+    - Has tons of different subscriptions for servers/DNS/SQL etc.
 
 ### Configure Detection in Microsoft Defender XDR
 
