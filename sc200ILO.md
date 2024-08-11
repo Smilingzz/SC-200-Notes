@@ -231,6 +231,7 @@
       - To turn on Goto **Settings > Endpoints > Advanced features > Turn on auto. investigation and remediation**.
 - Configure cloud workload protections in Microsoft Defender for Cloud
   - <https://learn.microsoft.com/en-us/azure/defender-for-cloud/workload-protections-dashboard>
+  - <https://learn.microsoft.com/en-us/training/paths/sc-200-mitigate-threats-using-azure-defender/>
   - **TLDR**
     - Workload protections dashboard exists in Defender for Cloud.
     - Basically, it logs data from cloud/hybrid/on-prem resources and makes it secure through the service.
@@ -239,8 +240,27 @@
 ### Configure Detection in Microsoft Defender XDR
 
 - Configure and manage custom detections
+  - <https://learn.microsoft.com/en-us/defender-xdr/custom-detection-rules>
+  - **TLDR**
+    - Custom detections can be made with KQL.
+      - Query must return Timestamp and ReportId, and one other ID for device or similar etc.
+      - Select **Create detection rule** and configure it.
+        - Configure frequency on how often it should run.
+        - Choose which entity is the impacted one, i.e. if rule hits, what is the impacted entity?
+        - Specify actions (device = run AV, isolate etc.) (files = block / quarantine) (users = isolate etc.)
+        - Set rule scope. (All devices / device groups).
+    - We can mage existing ones in **Hunting > Custom detection rules**.
 - Configure alert tuning
+  - <https://learn.microsoft.com/en-us/defender-xdr/investigate-alerts?tabs=settings>
+  - **TLDR**
+    - Goto **Settings > Defender XDR > Alert Tuning > Add new rule > specify which service (Enpoint/Office 365 etc) > add conditions that should supress the alert > Select either Hide/Resolve alert**.
 - Configure deception rules in Microsoft Defender XDR
+  - <https://learn.microsoft.com/en-us/defender-xdr/configure-deception>
+  - **TLDR**
+    - Deception basically adds decoy accounts and hosts in the tenant.
+    - Turn on deception Goto **Settings > Endpoints > Advanced Features under General > Toggle on Deception capabilities**.
+    - To create/modify deception rules:
+      - Goto **Settings > Endpoints > Add deception rule > Config name, lure types > Add devices lure should belong to**.
 
 ### Configure Detections in Microsoft Sentinel
 
