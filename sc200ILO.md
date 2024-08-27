@@ -265,13 +265,67 @@
 ### Configure Detections in Microsoft Sentinel
 
 - Classify and analyze data by using entities
+  - <https://learn.microsoft.com/en-us/azure/sentinel/entities>
+  - **TLDR**
+    - Entities are special pieces of data recognized by Sentinel.
+      - Includes IP, Hosts, Accounts, URLs etc.
+    - Strong identifiers exist = can always uniquely identify an entity.
+    - Weak identifiers exist = can sometimes uniquely identify an entity.
 - Configure scheduled query rules, including KQL
+  - <https://learn.microsoft.com/en-us/azure/sentinel/create-analytics-rules?tabs=azure-portal#get-started-creating-a-scheduled-query-rule>
+  - **TLDR**
+    - First we define the rule logic = KQL.
+    - Goto **Azure Portal > Configuration > Analytics > +Create > Scheduled query rule**.
+      - Config name etc.
+      - Add KQL rule logic.
+      - Determine scope and schedule of query.
 - Configure near-real-time (NRT) query rules, including KQL
+  - <https://learn.microsoft.com/en-us/azure/sentinel/create-nrt-rules?tabs=azure-portal>
+  - **TLDR**
+    - Goto **Azure Portal > Configuration > Analytics > +Create > NRT query rule**.
+      - Same configuration as scheduled query rules.
 - Manage analytics rules from Content hub
+  - <https://learn.microsoft.com/en-us/training/modules/manage-content-microsoft-sentinel/2-use-solutions-from-content-hub?ns-enrollment-type=learningpath&ns-enrollment-id=learn.wwl.sc-200-create-detections-perform-investigations-azure-sentinel>
+  - <https://learn.microsoft.com/en-us/azure/sentinel/sentinel-solutions-deploy?tabs=azure-portal>
+  - **TLDR**
+    - Content hub can be used to install functionality/content automatically to products in Sentinel.
 - Configure anomaly detection analytics rules
+  - <https://learn.microsoft.com/en-us/azure/sentinel/work-with-anomaly-rules>
+  - <https://learn.microsoft.com/en-us/training/modules/use-entity-behavior-analytics-azure-sentinel/4a-use-anomaly-detection-analytical-rule-templates?ns-enrollment-type=learningpath&ns-enrollment-id=learn.wwl.sc-200-create-detections-perform-investigations-azure-sentinel>
+  - **TLDR**
+    - Goto **Sentinel > Analytics > Rule templates > Filter for Anomaly templates**.
+      - Configure rule.
+      - Description, data sources, parameters, theshold, rule frequency.
 - Configure the Fusion rule
+  - <https://learn.microsoft.com/en-us/azure/sentinel/configure-fusion-rules>
+  - **TLDR**
+    - Goto **Sentinel > Analytics > Active rules**.
+    - Under Advanced Multistage Attack Detection we can check the status of Fusion rules.
+    - We can also configure source signals of the fusion rule.
 - Query Microsoft Sentinel data by using ASIM parsers
+  - <https://learn.microsoft.com/en-us/training/modules/data-normalization-microsoft-sentinel/5-create-asim-parser?ns-enrollment-type=learningpath&ns-enrollment-id=learn.wwl.sc-200-create-detections-perform-investigations-azure-sentinel>
+  - **TLDR**
+    - Advanced Security Information Model (ASIM) uses source-specific parsers instead of tables in their queries.
+      - Enables greater detail of data from specific sources.
+    - Create ASIM:
+      - Collect Sample logs.
+      - Identify schemas.
+      - Map source fields to indentified schemas.
+      - Develop ASIM parser(s) for each schema.
+      - Deploy in parser in Sentinel workspace.
 - Manage and use threat indicators
+  - <https://learn.microsoft.com/en-us/training/modules/connect-threat-indicators-to-azure-sentinel/>
+  - **TLDR**
+    - TAXII 2.0 and 2.1 data sources can be connected.
+      - Goto **Data connectors > Threat Intelligence - TAXII > Open connector**.
+        - Configure and Add.
+    - Connect Sentinel to third-party TI-platform.
+      - Register an app in Entra ID to get app ID, sectret and tenant ID.
+      - Config API permissions for the registered app.
+      - Admin consent to app: **Microsoft Entra ID > App registrations > app name > View API Permissions > Grant admin consent for tenant name**.
+      - Configure TI product to integrate with Graph Security TI API (feed app ID from sentinel).
+      - Goto **Microsoft Sentinel > Data connectors > select the Threat Intelligence Platforms (Preview) connector > Open connector page > Connect**
+    - TI indicators can be queried with KQL, found in table ThreatIntelligenceIndicator.
 
 ## Manage Incident Response (35–40%)
 
