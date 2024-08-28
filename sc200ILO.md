@@ -333,7 +333,15 @@
 
 - Investigate and remediate threats to Microsoft Teams, SharePoint Online, and OneDrive
 - Investigate and remediate threats in email by using Microsoft Defender for Office 365
+  - <https://learn.microsoft.com/en-us/training/modules/m365-threat-remediate/automate-investigate-remediate>
+  - **TLDR**
+    - Automated Investigation and Response (AIR) exists, playbooks that can be launched directly if an alert is triggered or manually from the Explorer view.
+      - Remediations include delete email messages or clusters, block URL, turn off external email forwarding or turn off delegation.
+      - AIR can be configured as Global/Sec Admin.
 - Investigate and remediate ransomware and business email compromise incidents identified by automatic attack disruption
+  - <https://learn.microsoft.com/en-us/defender-xdr/automatic-attack-disruption>
+  - **TLDR**
+    - Automated response action can contain devices and users as to remediate above incidents.
 - Investigate and remediate compromised entities identified by Microsoft Purview data loss prevention (DLP) policies
 - Investigate and remediate threats identified by Microsoft Purview insider risk policies
 - Investigate and remediate alerts and incidents identified by Microsoft Defender for Cloud
@@ -389,6 +397,6 @@
 - Create custom workbooks that include KQL
 - Configure visualizations
 
+## Other useful links
 
-## Other useful links:
 - <https://github.com/OneEqualsOne/Azure-Learning-Materials/blob/main/SC-200/SC-200%20Notes.md>
