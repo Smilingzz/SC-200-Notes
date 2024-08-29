@@ -343,6 +343,15 @@
   - **TLDR**
     - Automated response action can contain devices and users as to remediate above incidents.
 - Investigate and remediate compromised entities identified by Microsoft Purview data loss prevention (DLP) policies
+  - <https://learn.microsoft.com/en-us/training/modules/respond-to-data-loss-prevention-alerts-microsoft-365/3-investigate-data-loss-prevention-alerts-microsoft-365-compliance>
+  - **TLDR**
+    - View Alerts Goto **Purview > Solutions > DLP > Alerts**
+      - One can also filter alerts.
+      - Select alert.
+        - Events tab show events related to alert.
+        - Sensitive Info Types: Details on information detected in the content.
+      - Manage Alert.
+        - Active/Investigating/Dismissed/Resolved
 - Investigate and remediate threats identified by Microsoft Purview insider risk policies
 - Investigate and remediate alerts and incidents identified by Microsoft Defender for Cloud
 - Investigate and remediate security risks identified by Microsoft Defender for Cloud Apps
@@ -400,3 +409,29 @@
 ## Other useful links
 
 - <https://github.com/OneEqualsOne/Azure-Learning-Materials/blob/main/SC-200/SC-200%20Notes.md>
+- <https://learn.microsoft.com/en-us/credentials/applied-skills/configure-siem-security-operations-using-microsoft-sentinel/>
+
+## Practise for Exam
+
+### URL
+
+- <https://www.examtopics.com/exams/microsoft/sc-200>
+
+### Q&A
+
+- To exclude certain servers from agentless scanning.
+  - Create an exclusion tag when using Azure Defender for Servers.
+  - Requires Defender for Servers Plan 2.
+- To generate alerts in Cloud Apps for external sharing of confidential files.
+  - Enable file monitoring in Cloud Apps.
+  - Add automatic scan of new files for Azure Information Protection classification labels and content inspection warnings.
+- Live Shell connection to Onboarded devices in Defender 365.
+  - Create RBAC
+  - Enable Live Response.
+- Investigate Teams chats related to a user.
+  - Location: Exchange mailboxes
+  - Keywords: Kind
+- Collect investigation packages can be collected from onboarded Windows/Linux/Mac hosts.
+- View recommendations to resolve alerts in Azure Security Center:
+  - Select 'Mitigate the threat' under Security Alerts.
+- 
