@@ -353,8 +353,38 @@
       - Manage Alert.
         - Active/Investigating/Dismissed/Resolved
 - Investigate and remediate threats identified by Microsoft Purview insider risk policies
+  - <https://learn.microsoft.com/en-us/training/modules/m365-compliance-insider-manage-insider-risk/>
+  - **TLDR**
+    - One can view alerts in the portal.
+    - One can filter alerts based on status, severity, time detected and policy.
+    - Case overview: Shows details of each case.
+      - Can have multiple alerts.
+      - User activity view
+      - Content explorer.
+      - One can escalate for investigation and resolve it.
 - Investigate and remediate alerts and incidents identified by Microsoft Defender for Cloud
+  - <https://learn.microsoft.com/en-us/training/modules/remediate-azure-defender-security-alerts/3-remediate-alerts>
+  - **TLDR**
+    - View alerts: **Cloud overview > Defender for Cloud tab > Security Alerts**.
+    - Take action tab
+      - Mitigate the threat: Manual remediation steps for alert.
+      - Prevent future attacks: Security recommendations.
+      - Trigger automated response: Trigger logic app.
+      - Supress similar alerts.
 - Investigate and remediate security risks identified by Microsoft Defender for Cloud Apps
+  - <https://learn.microsoft.com/en-us/training/modules/microsoft-cloud-app-security/>
+  - **TLDR**
+    - Remediations:
+      - Prevent data exfiltration.
+      - Protect downloaded cloud files with Azure Information Protection (AC).
+      - Prevent upload for unlabeled files.
+      - Monitor users for compliance.
+      - Block access/custom activities.
+    - Azure Information Protection:
+      - First discover data in Cloud Apps.
+      - Classify data discovered (Personal/Public/General/Confidential/Highly Confidential)
+      - Enable Azure Information Protection under **Cloud Apps > Settings > Azure Information Protection > Automatically scan new files for Azure Information Protection classification labels**
+      - File policies under **Cloud Apps > Control > Policies > Create Policy > File Policy**
 - Investigate and remediate compromised identities in Microsoft Entra ID
 - Investigate and remediate security alerts from Microsoft Defender for Identity
 - Manage actions and submissions in the Microsoft Defender portal
@@ -434,4 +464,7 @@
 - Collect investigation packages can be collected from onboarded Windows/Linux/Mac hosts.
 - View recommendations to resolve alerts in Azure Security Center:
   - Select 'Mitigate the threat' under Security Alerts.
-- 
+- Manage Azure Defender Key Vault
+  - One can modify Key Vault firewall to reduce risk of adversary entering from bad IP.
+- Enable email notifications in Defender for Cloud
+  - **Environment settings -> click subscription -> Email notifications**
