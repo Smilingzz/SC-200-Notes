@@ -386,8 +386,30 @@
       - Enable Azure Information Protection under **Cloud Apps > Settings > Azure Information Protection > Automatically scan new files for Azure Information Protection classification labels**
       - File policies under **Cloud Apps > Control > Policies > Create Policy > File Policy**
 - Investigate and remediate compromised identities in Microsoft Entra ID
+  - <https://learn.microsoft.com/en-us/training/modules/protect-identities-with-aad-idp/>
+  - **TLDR**
+    - Two risks exist
+      - User Risk: Unusual behaviour/leaked credentials.
+      - Sign-in risk: Unfamiliar sign-in/atypical travel.
+    - Remediation workflow
+      - Define a Risk Policy: Can have automated response.
+      - Or let administrators decidec when risk policy detects.
+    - Remediation methods
+      - Self-remediation (let user do it)
+      - Reset passwords manually.
+      - Rismiss user risk
+      - Block users through risk policy.
 - Investigate and remediate security alerts from Microsoft Defender for Identity
+  - <https://learn.microsoft.com/en-us/training/modules/m365-threat-safeguard/review-compromised-accounts>
+  - **TLDR**
+    - Each alert has an activity log.
+    - Can be integrated with Cloud Apps and Endpoint.
 - Manage actions and submissions in the Microsoft Defender portal
+  - <https://learn.microsoft.com/en-us/training/modules/mitigate-incidents-microsoft-365-defender/7-use-action-center>
+  - **TLDR**
+    - We can view pending and completed remediation actions for devices, email and identities.
+    - Submission portal exists.
+      - Can submit email messages, URLs and attachment to MS for scanning.
 
 ### Respond to Alerts and Incidents Identified by Microsoft Defender for Endpoint
 
