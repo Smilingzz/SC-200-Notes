@@ -490,3 +490,7 @@
   - One can modify Key Vault firewall to reduce risk of adversary entering from bad IP.
 - Enable email notifications in Defender for Cloud
   - **Environment settings -> click subscription -> Email notifications**
+- Alert suppression in Endpoint can be made on: (1) this device or (2) the entire organization (not device groups).
+- Remediate unsanctioned apps in Cloud Apps
+  - Select app, tag as unsanctioned, generate block script and run the script on the source appliance.
+- 
