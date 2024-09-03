@@ -414,10 +414,33 @@
 ### Respond to Alerts and Incidents Identified by Microsoft Defender for Endpoint
 
 - Investigate timeline of compromised devices
+  - <https://learn.microsoft.com/en-us/defender-endpoint/device-timeline-event-flag>
+  - **TLDR**
+    - Open an alert, go to the device and inspect the timeline.
+    - Alternatively, go directly to the device page and timeline tab.
 - Perform actions on the device, including live response and collecting investigation packages
+  - <https://learn.microsoft.com/en-us/defender-endpoint/respond-machine-alerts>
+  - <https://learn.microsoft.com/en-us/defender-endpoint/live-response>
+  - **TLDR**
+    - Go to device page, select **Collect investigation package** (.zip file).
+    - Live response: Device inventory, open device, initiate live response session.
 - Perform evidence and entity investigation
+  - <https://learn.microsoft.com/en-us/training/modules/perform-evidence-entities-investigations-microsoft-defender-for-endpoint/>
+  - **TLDR**
+    - Files: Go to file page, see prevalance, incidents, observed in organization etc. Deep file analysis executes file in secure environment.
+    - Accounts: Has a page, can see user details, alerts, observed in organization.
+    - IPs: IP in organization, prevalance, devices observed with IP.
+    - Domains: URL in organization, recent devices with URL.
 - Enrich investigations by using other Microsoft tools
+  - **TLDR**
+    - KQL?
 - Investigate threats by using unified audit log
+  - <https://learn.microsoft.com/en-us/training/modules/investigate-threats-using-audit-in-microsoft-365-defender-microsoft-purview-standard/5-search-audit-log>
+  - **TLDR**
+    - UAL contains logs from a ton of MS 365 services.
+    - We search it through audit log search: Specify date interval, activities, users, files/folders/sites/all to search.
+    - We can view results (up to 50k rows): Date, IP, user, activity, item, details.
+    - Export results to a .csv file.
 - Investigate threats by using Content Search
 - Perform threat hunting by using Microsoft Graph activity logs
 
@@ -493,4 +516,3 @@
 - Alert suppression in Endpoint can be made on: (1) this device or (2) the entire organization (not device groups).
 - Remediate unsanctioned apps in Cloud Apps
   - Select app, tag as unsanctioned, generate block script and run the script on the source appliance.
-- 
