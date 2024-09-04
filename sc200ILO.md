@@ -275,7 +275,7 @@
   - <https://learn.microsoft.com/en-us/azure/sentinel/create-analytics-rules?tabs=azure-portal#get-started-creating-a-scheduled-query-rule>
   - **TLDR**
     - First we define the rule logic = KQL.
-    - Goto **Azure Portal > Configuration > Analytics > +Create > Scheduled query rule**.
+    - Goto **Azure Portal > Configuration > Analytics > Create > Scheduled query rule**.
       - Config name etc.
       - Add KQL rule logic.
       - Determine scope and schedule of query.
@@ -447,28 +447,73 @@
 ### Manage Incidents in Microsoft Sentinel
 
 - Triage incidents in Microsoft Sentinel
+  - <https://learn.microsoft.com/en-us/azure/sentinel/investigate-incidents>
+  - **TLDR**
+    - Conduct investigations from the **Sentinel > Threat management > Incidents** page.
+    - **Sentinel Responder** role is required to investigate incidents.
+    - Clicking on Actions of an incident can:
+      - Investigate
+      - Run playbook
+      - Create automation rule
+    - We can view Logs (KQL), Tasks and Activity logs (things done already).
+    - Each incident has:
+      - Incident timeline.
+      - Similar incidents.
+      - Entities.
+    - Investigation graph exists to graphically inspect incident.
 - Investigate incidents in Microsoft Sentinel
+  - Same as above.
 - Respond to incidents in Microsoft Sentinel
+  - Same as above.
 
 ### Configure Security Orchestration, Automation, and Response (SOAR) in Microsoft Sentinel
 
 - Create and configure automation rules
+  - <https://learn.microsoft.com/en-us/training/modules/automation-microsoft-sentinel/3-create-automation-rules>
+  - **TLDR**
+    - Create under **Sentinel > Configuration > Automation > Create > Automation rule**
+    - Configure
+      - When the rule should be triggered (what incidents).
+      - Conditions to be met and what actions should be taken.
+      - Actions to take (change status/severity, assign user to incident, add tag to incident).
 - Create and configure Microsoft Sentinel playbooks
+  - <https://learn.microsoft.com/en-us/azure/sentinel/automation/create-playbooks?tabs=azure-portal%2Cconsumption>
+  - **TLDR**
+    - Goto **Sentinel > Configuration > Automation > Create > Playbook with X**.
+      - X = incident trigger.
+      - X = alert trigger.
+      - X = entity trigger.
+    - Add actions to playbook.
+      - Add actions/logical conditions/loops/switch case conditions.
 - Configure analytic rules to trigger automation
+  - <https://learn.microsoft.com/en-us/azure/sentinel/create-manage-use-automation-rules?tabs=azure-portal%2Conboarded>
+  - **TLDR**
+    - Automation rules are triggered when incidents are created/updated or alerts are created.
 - Trigger playbooks manually from alerts and incidents
+  - Go to an incident/alert and simply "Run Playbook".
 - Run playbooks on on-premises resources
+  - Can't find any information on it...
+    - Link it through a VM, make a connector to Log Analytics workspace. Then its another entity. (?)
 
 ## Perform Threat Hunting (15–20%)
 
 ### Hunt for Threats by Using KQL
 
 - Identify threats by using Kusto Query Language (KQL)
+  - EZ.
 - Interpret threat analytics in the Microsoft Defender portal
+  - EZ.
 - Create custom hunting queries by using KQL
+  - Goto **Sentinel > Threat management > Hunting > Queries > New query**.
+  - Make KQL.
 
 ### Hunt for Threats by Using Microsoft Sentinel
 
 - Analyze attack vector coverage by using the MITRE ATT&CK in Microsoft Sentinel
+  - <https://learn.microsoft.com/en-us/azure/sentinel/mitre-coverage>
+  - **TLDR**
+    - Attack coverage found under **Sentinel > Threat management > MITRE ATT&CK**.
+    - See incident attack vector: view under **Tactics and techniques**.
 - Customize content gallery hunting queries
 - Use hunting bookmarks for data investigations
 - Monitor hunting queries by using livestream
