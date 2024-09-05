@@ -502,6 +502,7 @@
 - Identify threats by using Kusto Query Language (KQL)
   - EZ.
 - Interpret threat analytics in the Microsoft Defender portal
+  - Goto **Defender > Threat Intelligence > Threat analytics**.
   - EZ.
 - Create custom hunting queries by using KQL
   - Goto **Sentinel > Threat management > Hunting > Queries > New query**.
@@ -515,21 +516,72 @@
     - Attack coverage found under **Sentinel > Threat management > MITRE ATT&CK**.
     - See incident attack vector: view under **Tactics and techniques**.
 - Customize content gallery hunting queries
+  - <https://learn.microsoft.com/en-us/azure/sentinel/hunting?tabs=azure-portal>
+  - **TLDR**
+    - Goto **Sentinel > Threat management > Hunting > Queries**
+      - Contains all hunting queries install with security solutions from Content Hub.
+      - We can also create queries from here.
 - Use hunting bookmarks for data investigations
+  - <https://learn.microsoft.com/en-us/azure/sentinel/bookmarks>
+  - **TLDR**
+    - Found in **Sentinel > Threat management > Hunting > Bookmarks**
+    - Saves results from Log Analytics KQL queries. Can also add notes and tags to them.
+    - To save goto **Sentinel > Threat management > Hunting > Hunting**
+      - Run a query, view results. Then Add bookmark.
 - Monitor hunting queries by using livestream
+  - <https://learn.microsoft.com/en-us/azure/sentinel/livestream>
+  - **TLDR**
+    - Found in **Sentinel > Threat management > Hunting > Livestream**
+    - To make a livestream goto **Sentinel > Threat management > Hunting > Queries**
+      - Right click on query and select Add to livestream.
+      - Then goto Livestream tab and select New Livestream.
+        - Modify query selected from previous step OR create your own query.
 - Retrieve and manage archived log data
+  - <https://learn.microsoft.com/en-us/azure/sentinel/restore>
+  - **TLDR**
+    - Goto **Sentinel > General > Search > Restore > Saved Searches > Restore**
+      - Configure time range and table, then select restore.
+    - Can view the data in the Restoration tab.
+      - Can query it like any other Log Analytics logs.
 - Create and manage search jobs
+  - <https://learn.microsoft.com/en-us/azure/sentinel/search-jobs?tabs=azure-portal>
+  - **TLDR**
+    - We can do search jobs on all logs (Archived, Analytics and Basic) up to seven years old.
+    - Do by **Sentinel > General > Search > Search in Search bar and click Start > Enter KQL > toggle Search job mode on**
+      - Filter time range
+      - Select Search Job, save as a table name and then Run a search job.
+    - Results are found under **Saved Searches**.
+      - We can add filters in the results.
 
 ### Analyze and Interpret Data by Using Workbooks
 
 - Activate and customize Microsoft Sentinel workbook templates
+  - <https://learn.microsoft.com/en-us/azure/sentinel/monitor-your-data?tabs=azure-portal>
+  - **TLDR**
+    - Create workbook from template
+      - Goto **Sentinel > Threat management > Workbooks > Templates**
+        - Click on a template, hit save and click View saved workbook.
+        - We can edit the workbooks.
+
 - Create custom workbooks that include KQL
+- <https://learn.microsoft.com/en-us/azure/sentinel/monitor-your-data?tabs=azure-portal>
+  - **TLDR**
+  - Create new workbook
+    - Goto **Sentinel > Threat management > Workbooks > Templates > Add Workbook**
+      - Edit the workbook, build query (set Data Source to logs and Resource Type to Log Analytics).
 - Configure visualizations
+  - <https://learn.microsoft.com/en-us/azure/sentinel/get-visibility>
+  - **TLDR**
+    - Overview page exists under General.
 
 ## Other useful links
 
-- <https://github.com/OneEqualsOne/Azure-Learning-Materials/blob/main/SC-200/SC-200%20Notes.md>
-- <https://learn.microsoft.com/en-us/credentials/applied-skills/configure-siem-security-operations-using-microsoft-sentinel/>
+- Other notes
+  - <https://github.com/OneEqualsOne/Azure-Learning-Materials/blob/main/SC-200/SC-200%20Notes.md>
+- SIEM Cert for Sentinel
+  - <https://learn.microsoft.com/en-us/credentials/applied-skills/configure-siem-security-operations-using-microsoft-sentinel/>
+- Roles in Sentinel
+  - <https://learn.microsoft.com/en-us/azure/sentinel/roles>
 
 ## Practise for Exam
 
@@ -539,10 +591,10 @@
 
 ### Q&A
 
-- To exclude certain servers from agentless scanning.
+- Exclude certain servers from agentless scanning.
   - Create an exclusion tag when using Azure Defender for Servers.
   - Requires Defender for Servers Plan 2.
-- To generate alerts in Cloud Apps for external sharing of confidential files.
+- Generate alerts in Cloud Apps for external sharing of confidential files.
   - Enable file monitoring in Cloud Apps.
   - Add automatic scan of new files for Azure Information Protection classification labels and content inspection warnings.
 - Live Shell connection to Onboarded devices in Defender 365.
@@ -551,7 +603,8 @@
 - Investigate Teams chats related to a user.
   - Location: Exchange mailboxes
   - Keywords: Kind
-- Collect investigation packages can be collected from onboarded Windows/Linux/Mac hosts.
+- Collect investigation packages
+  - Can be collected from onboarded Windows/Linux/Mac hosts.
 - View recommendations to resolve alerts in Azure Security Center:
   - Select 'Mitigate the threat' under Security Alerts.
 - Manage Azure Defender Key Vault
