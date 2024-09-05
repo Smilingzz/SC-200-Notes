@@ -588,6 +588,7 @@
 ### URL
 
 - <https://www.examtopics.com/exams/microsoft/sc-200>
+- <https://www.itexams.com/exam/SC-200?>
 
 ### Q&A
 
