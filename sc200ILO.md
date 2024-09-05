@@ -570,6 +570,7 @@
     - Goto **Sentinel > Threat management > Workbooks > Templates > Add Workbook**
       - Edit the workbook, build query (set Data Source to logs and Resource Type to Log Analytics).
 - Configure visualizations
+  - <https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/tutorial-logs-dashboards>
   - <https://learn.microsoft.com/en-us/azure/sentinel/get-visibility>
   - **TLDR**
     - Overview page exists under General.
