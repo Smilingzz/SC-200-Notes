@@ -1,3 +1,866 @@
+# SC-200
+
+## List of Abbreviations
+
+- Cyber Defence Operations Center (CDOC)
+- Security Information and Event Management (SIEM)
+- Extended Detection and Response (XDR)
+- Active Directory (AD)
+- Automated Investigation and Remediation (AIR)
+- Anti-Virus (AV)
+- Advanced Hunting (AH)
+- Machine Learing (ML)
+- Domain Controller (DC)
+- Cloud access security broker (CASB)
+- Web-Application Firewall (WAF)
+- On-behalf of (OBO)
+- Data Loss Prevention (DLP)
+- Role-Based Access Control (RBAC)
+- Server Message Block (SMB)
+- Indication of Compromise (IoC)
+- Cloud Security Posture Management (CSPM)
+- Cloud Workload Protection (CWP)
+- Azure Resource Graph (ARG)
+- Common Event Format (CEF)
+
+## Defender XDR
+
+### XDR Introduction
+
+- XDR is the "package" which contains all other Defender threat protection.
+- Detects malicious activity across email, endpoints, application and identity.
+- XDR has automation. Can remediate some threats automatically.
+- Microsoft Graph is a REST API.
+  - Security Graph API allows development of customized security.
+  - API supports KQL.
+- AD compromise is detected in Identity.
+- Malicious emails are detected in Office 365.
+- Malware is detected in Endpoint.
+
+### XDR
+
+- XDR Portal brings together:
+  - Office 365: All Office 365 resources like Outlook etc.
+  - Endpoint: Automated investigation and response for devices.
+  - XDR: Uses 365 portfolio to automatically analyze attacks across domains and build a picture on a single dashboard.
+    - Cloud Apps: SaaS and PaaS solution, threat protection on cloud apps.
+    - Identity: Security for AD.
+    - Vulnerability Management: Asset visibility, risk-based assesment etc.
+- With XDR Portal we can set up security policies.
+  - We can configure how strict we should be against phishing for certain domains and the likes.
+- XDR is aligned with the MITRE ATT&CK chain.
+- The incident overview includes a multitude of tabs with information. Like Alerts, Devices, Users, Mailboxes, Apps, Investigations and Evicdence and Response as well as a Graph.
+- Each Alert in XDR has a MITRE Category.
+- Alert supression rules can be on either a device or an organization.
+- AIR in Endpoint:
+  - May quarantine emails, block a process or a domain.
+  - Can detect other entities and the likes given an alert. If malware is found, it will investigate all other devices for that malware.
+  - Has different settings of automation. Recommended is full automation, can then remediate threats.
+- Action Center = Remediation actions for Endpoint and Office 365.
+  - Includes remediation actions on automated investigations and AV for example.
+  - One can undo completed actions.
+  - One can send suspicious Emails/URLs/Files for analysis.
+  - One can view user reported phishing.
+- Advanced Hunting:
+  - Can run queries on Endpoint, Office 365, Cloud apps and Identity.
+  - We can make custom KQL detection with automated response.
+  - AH has event/activity data, updated immediatley. Also has entity data, updated less often (ca. 15 min).
+  - AH has multiple schemas.
+- Secure Score exists, reflects organisations security posture.
+- Threat analytics increase understanding of emerging threats, vulnerabilities, prevalent malware etc.
+  - One can view updated threats and read more details, including recommended actions.
+
+### Entra ID
+
+- Enables investigation, detection and remediation of identity-based risks, based on AD.
+- Risk classification:
+  - *user risk*: Abnormal user behaviour or leaked credentials.
+  - *sign-in risk*: Unfamiliar sign-in/atypical travel/suspicious IP.
+- Workflow:
+  - *self-remediation*: User resets password, enforces MFA.
+  - *admin remediation*: Admin decides on action when risk is detected. Admin sets policies that monitor for risk.
+- Identity risk = configure policy, investigate with a report, then remediate.
+- Risk policy:
+  - How Identity Protection responds to particular type of risks.
+  - *Sign-in risk policy*:
+    - Every sign-in gets a risk score, we can set threshold of what action should be taken at what score.
+  - *User-risk policy*:
+    - Same as above but not uses the context of identity behaviour pattern.
+  - We can also set-up MFA.
+
+### Office 365
+
+- Protects against phishing, automated response, provides insights and can simulate phishing.
+- On-premise/hybrid/cloud email protection.
+- Remediation actions which require approval:
+  - Soft delete emails or clusters.
+  - Block URL.
+  - Turn off external mail forwarding.
+  - Turn off delegation.
+- *Safe Attachments* protects against unknown email threats by routing all messages and attachments through ML and other techniques to detect malicious intent. If none is found the email is then released to the recipient.
+  - We can create Safe Attachment policy, i.e. how malicious attachments should be handled if detected in an email.
+- *Safe Links* gives access to policies related to URLs in emails, and protects users against malicious links!
+- *Anti-phishing policies* checks emails if they may be phishing. Action is taken based on the policies set-up.
+- Office 365 does not require any sensor or such on all devices.
+
+### Identity
+
+- Leverages on-premises AD signals to identify, detect and investigate advanced threats, compromised identities and malicious insider actions.
+- Creates behavioural profile of each user. Anomaly detection.
+- Sensors monitor on DC.
+- Can detect different stages of attack:
+  - Reconnaissance (LDAP, Account enumeration etc)
+  - Compromised Credential (Brute force attempt)
+  - Lateral Movement (Pass-the-ticket)
+  - Domain Dominance (NTLM Relay, DCSync)
+- Intune is not supported in Identity.
+
+### Cloud Apps
+
+- Protects cloud services.
+- CASB is the middle-man between users and their cloud apps. Allows monitoring and security controls.
+- Four elements of Cloud Apps framework:
+  - Discover and control Shadow IT.
+  - Protect sensitive information.
+  - Anomaly detection.
+  - Compliance assessment of cloud services.
+- Cloud Apps Dashboard exists, gives good overview of IPs, top users, category of apps etc.
+- If Endpoint exists, it can block unsanctioned applications automatically.
+- Has *Conditional Access App Control*, works best with Entra ID.
+  - Define policies related to data exfiltration, user behaviour, blocking of access etc.
+- Protect Information:
+  - Discover apps and data in the organisation.
+  - Classify the data in different categories.
+  - Create policies that respond to alerts.
+  - Monitor and report.
+- Cloud Apps has anomaly detection, can be configured.
+
+## Copilot
+
+### Generative AI
+
+- Encoders and decoders do dimension explosion/reduction.
+- Languange models try to predict sentences.
+- One can use different versions of Copilot depending on the use-case.
+  - Copilot is built in to Azure and can be used for help with KQL as well.
+
+### Responsible GenAI
+
+- Responsible AI: Identify potential harms, measure presence of harms, mitigate with multiple layers and operate the solution responsibly.
+- Basically, try to look for dangerous prompts and mitigate them.
+- Having an incident response plan is good, also make sure to adhere to legal, privacy etc.
+- Enable loggin of the solution as to detect problems.
+
+### Microsoft Copilot
+
+- Copilot can:
+  - Can streamline incident summary.
+  - Analysis of incident impact.
+  - Generate KQL.
+  - Reverse engineer scripts.
+  - Guide in response.
+- Copilot does this through:
+  - Orchestration through NLP
+  - Has plugins (tools/skills) s.a. security software programs.
+- Efficient prompts are required to make Copilot produce good and reliable results.
+- Users require permission to use Copilot, set-up in Entra ID.
+- Copilot has customizable access to tenant files and plugins.
+  - Azure Firewall
+  - Azure Web-Application Firewall
+  - Entra
+  - Intune
+  - XDR
+  - External Attack Surface Management
+  - Threat Intelligence
+  - Purview
+  - Sentinel
+  - Public web plugin
+- Promptbooks exists, "pre-defined" prompts to Copilot. Can be configured.
+- Third-party plugins require OAuth and not OBO authentication.
+- Copilot is embedded currently in XDR and Purview, making prompts more efficient.
+
+## Purview
+
+### DLP Alerts
+
+- DLP alerts originate from Purview or Cloud Apps.
+- DLP Policies allow:
+  - Monitoring on OneDrive, Sharepoint etc for sensitive data.
+  - Prevention of accidental sharing.
+  - Files shared outside organisation, block access to them.
+  - Monitor desktop versions of Office 365.
+- Sensitive information = can be defined by regex or function.
+  - Purview can then detect credit card information etc.
+- Encryption of files exist.
+- DLP Policy contains:
+  - Where (which services/apps) to protect files.
+  - When and how to protect.
+- eDiscovery allows for compliance scans.
+- DLP in Cloud Apps:
+  - Viewable in Alerts if DLP has been configured.
+- DLP component 'Sensitivity label' classifies documents.
+- The 'File Policy' in Cloud Apps is used for DLP.
+- DLP component 'DLP Policy' protects contents in the cloud.
+
+### Purview manage Insider risk
+
+- Insider risk workflow
+  - Make policies: Templates and policy condition. Policy dashboard exists to view all policies. We can anonymize names of users which violate policies. We can make exceptions for file types.
+  - Policies generate alerts:
+  - Review alerts.
+  - Investigate the interesting alerts.
+  - Take action.
+- Insider Risk Management requires permission set be a global administrator. Requires roles Insider Risk Management or Insider Risk Management Admin role group.
+- Departing employee data theft template requires an HR Connector to be set-up.
+- Privacy and Policy indicators apply to all insider risk policies.
+- Each policy must have a template assigned in the policy.
+- Alerts can be assigned to a Case. A Case can then be investigated more deeply, and closed once finished.
+- In each case we can view a multitude of tabs. Including case overview, alerts, user activity, content explorer, case notes and contributors. We can also send notices to the user which relate to the case.
+- To capture forensic evidence in Purview, users must consent to explicit capturing, their devices be onboarded and have the Purview client installed.
+- Forensic evidence allows screen capturing (clips) of user devices, if they allow it.
+- Insider risk management notices templates exist. Automatically send email to users when their risky actions match a policy.
+- Policy Timeframes define past and future review periods after a policy matches.
+- Alert indicators and users or groups are needed when creating a policy.
+- eDiscovery premium is required in order to escalate a case for investigation.
+
+### Purview Audit
+
+- Audit enables logging (minimum 180 days) and searching (through Seach-UnifiedAuditLog cmdlet) activities performed by users and admins across Microsoft Exchange, Sharepoint, OneDrive and Entra.
+- Standard and Premium Audit exist. Premium allow logs to be stored for 1 year or up to 10, instead of 180 days of standard. Also, one can customize which services log what data, has increased API bandwidth and *Intelligent insights*, helps spot potential breaches. Premium allows greater loggin of emails with MailItemsAccessed, records all synced emails and which emails were interacted with.
+- Auditing is enabled in Purview compliance portal under *Audit*.
+- One can search the Audit logs with a multitude of parameters.
+- One can run up to 10 search jobs at a time.
+- Audit can be used to check how users interact with Copilot.
+- Audit logs can be exported to ```csv``` format (maximum 50.000 entries).
+  - Make a search job, export the results to ```csv```.
+  - Use Excel Power Query editor.
+- We can also use PowerShell to search and export audit logs.
+- Audit log retention policies (premium only) can be customized based on microsoft service, activity type and priority level (can override default policy).
+
+### Purview Content search
+
+- Has KQL.
+- eDiscovery can identify and deliver evidence in legal cases. Can search for content in Exchange, OneDrive, Sharepoint, Teams, 365 Groups and Yammer Teams.
+- Three levels:
+  - Content Search: Basic search and export.
+  - eDiscovery standard: Make cases, access control for users to view cases.
+  - eDiscovery premium: Advanced control (custodian) and workflow (tags, analytics etc).
+- Content search delivers results of email messages (not calendar), different file extentions like ```txt, html, doc, pdf, zip```. Maximum 1000 items can be previewed.
+- Export reports contain a summary, results of the logs exported like messages and locations.
+- *Search permission filters* exist.
+  - Can manage what can be searched in eDiscovery.
+  - One can also separate an organisation into compliance boundaries.
+  - We can determine filters based on mailboxes/onedrive/contents/site, determines what users/groups can search for.
+  - We tell what users/groups the filters apply to.
+  - Permission filters are made through PowerShell commands.
+- To run security filters one must connect PowerShell to Purview and Exchange Online.
+- To run security filters one must be a member of the Organization Management role in the Purview Compliance portal.
+- Content search can search and delete emails in the Exchange deployment.
+- To create and run Content search one must be member of eDiscovery manager group or be assigned Compliance Search role.
+- To delete messages, member of Organization Management group or Search and Purge role.
+
+### Purview Practical
+
+#### View DLP Alerts in Purview
+
+- MS Purview compliance portal > Solutions > **Data loss prevension** > Alerts.
+- Choose filters.
+- Select Alert
+  - Events
+  - Sensitive Info Types
+  - Manage Alert
+  - Management log (workflow history)
+
+#### Set up HR Connector
+
+- Global admin must consent to allow Office 365 Import service to access data in the organisation.
+- User that creates HR connector needs to be assigned the **Mailbox Import Export** role in Exchange online.
+- System must be in place that retrieves and exports data from organisations HR system and adds to ```csv``` file.
+- Now HR connector is done by:
+  - Create ap in Entra ID.
+  - Generate ```csv``` file from HR system.
+  - Create HR connector in Purview compliance portal.
+  - Run script that uploads HR data in the ```csv``` file to Microsoft cloud.
+
+#### Create new insider risk policy
+
+- Use **Insider risk management** policy wizard in Purview compliance portal.
+- In wizard, configure:
+  - Policy template.
+  - Users or groups to apply policy to.
+  - Alert indicators.
+  - Duration for monitoring.
+
+#### Configure and Manage Forensic Evidence
+
+- Confirm **insider risk management subscription** and add domain compliancedrive.microsoft.com to firewall allowlist.
+- Onboard user devices to Purview compliance portal and install Purview Client on devices.
+- Enable forensic evidence capturing, config parameters and offline capturing options in Purview compliance portal.
+- Define forensic evidence policies. One of:
+  - Specific activities.
+  - All activities.
+- Admin must visual capturing for specific users is defined and approved through dual auth. process.
+- Members of **Insider Risk Management** or **Insider Risk Management Admins** submit approval requests for devices/users to member of **Insider Risk Management Approvers** for capturing to commence.
+  - In Purview compliance portal, Insider risk management > Forensic evidence > User management.
+  - Select Manage forensic evidence requests tab.
+  - Select Create request.
+  - On Users page, select Add users.
+  - Locate user /w search and add, go next.
+  - On Forensic evidence policy page, add policy for the users.
+  - On Justification page, add justification in text.
+  - On Email Notifications page, select email template. Will be sent out to the users when request is approved.
+
+#### Approve or reject capturing requests
+
+- Go to Insider risk management > Forensic evidence > Pending requests. 
+- Select a user to review.
+- Review request, approve or reject.
+
+#### Revoke capturing
+
+- Go to Insider risk management > Forensic evidence > User management.
+- Select Approved users tab.
+- Select user and then remove.
+
+#### View captured clips
+
+- Can be viewed in **Forensics Evidence** tab.
+
+#### Create a Notice Template
+
+- In Purview compliance portal > Insider risk management > Notice templates tab (we can delete and update from here as well).
+- Create notice template.
+- Create a new notice template.
+  - Name
+  - Send from
+  - CC and Bcc
+  - Subject
+  - Message Body.
+
+#### Configure Audit in Purview
+
+- Verify subscription.
+  - Audit (standard) included in:
+    - Microsoft 365: E3, E5, F1, F3
+    - Office 365: E1, E3, E5, F3
+  - Audit (premium) included in:
+    - Microsoft 365: E5, E5 Compliance, F5 Compliance, F5 Security + Compliance
+    - Office 365: E5
+- Assign permissions.
+  - **View-Only Audit Logs** or **Audit Logs** roles to admin or investigation members.
+  - **Audit Manager** = export, search and manage audit settings.
+  - **Audit Reader** = export and search audits.
+- From now only for premium:
+  - Set up Audit (premium) for users enable correct license under **Licenses and Apps** page.
+  - Expand Apps section, ensure that **Microsoft 365 Advanced Auditing** is enabled.
+  - Enable audit events.
+  - Audit retention policies.
+
+## Endpoint
+
+- Administrators can request updates to software.
+- Has attack surface reduction:
+  - Microsoft Edge is run as a container.
+  - Applications must earn trust.
+  - Network protection in Microsoft Edge.
+  - Network firewall on host.
+- Has automatatic remediation capabilities.
+- We can view all devices, check all software, determine remediation steps based on vulnerabilities.
+- Endpoint requires a separate license.
+
+### Deploy Endpoint
+
+- To configure Endpoint portal, you must be global admin or sec admin.
+  - Data retention is six months by default.
+- Endpoint sensor requires Windows HTTP which it uses to send data and communicate with Endpoint service.
+- Endpoint works on Windows, macOS, Linux, Android and iOS.
+- To onboard a device, follow steps in the Defender portal.
+- Use RBAC to create appropriate control of Endpoint for users.
+- We can also group devices.
+  - We can have different remediation settings of device groups.
+- Advanced Features:
+  - Automated investigations.
+  - Remediate PUA.
+  - Limit correlations to device groups.
+  - Custom network indicators: block specific IP/domains basically.
+  - Tamper protection.
+  - Connect to Identity, Cloud Apps, Office 365, Purview, Intune.
+  - Conditional Access Policy with Intune.
+  - Find unmanaged devices (device discovery).
+  - Download Quarantined files.
+
+### Attack Surface Reduction
+
+- Attack surface reduction rules (requires Microsoft AV)
+  - ASR either NaN/Block/Audit/Warn.
+  - Many rules exist, including block executable content from email, office from creating child process, API calls to Office macro etc.
+  - Can create exceptions of some folders.
+  - Best practice, set all rules to audit first to evaluate impact.
+- Hardware-based isolation
+- Application control
+- Exploit protection
+- Network protection (requires Microsoft AV)
+- Web protection
+- Folder AC (requires Microsoft AV)
+
+### Device investigation
+
+- Device inventory list contains meta-information on all devices.
+- Each device has its own dashboard. We can view details on the device, conduct actions on it, like isolation or AV scan, see the timeline and software inventory.
+- Behavioural blocking:
+  - Uses AI and ML to identify and stop threats based on process trees and behaviour.
+  - Uses Next-generation protection to detect threats by analyzing behaviour and stop threats that are running.
+  - EDR makes incidents out of multiple alerts, linking things together.
+- Client behavioural blocking sends Endpoint sensor signals to cloud, which uses ML to process, and if determined a threat will send back to block an artifact.
+- Feedback-loop component can block similar attacks on other devices.
+- Endpoint in block mode will automatically block certain artifacts.
+  - Can be used with third-party AV.
+- Device Discovery:
+  - Basic mode: onboarded endpoints passively collect network events and extract device information.
+  - Standard mode: onboarded endpoints actively find devices.
+
+### Actions on Device in Endpoint
+
+- Live response exists = restricted remote shell on host.
+  - Like normal CMD, can also download files and upload files to host.
+- Investigation package.
+  - Contains info on auto-start applications
+  - Installed programs as ```csv```
+  - Network connections
+  - Prefetch files = Tracks files recently used.
+  - ```csv``` running process list.
+  - ```csv``` scheduled tasks.
+  - security event log.
+  - ```csv``` services and states.
+  - SMB sessions (network folders, misc net. comms)
+- Isolate host from network.
+- Restrict app execution.
+- Run AV scans.
+
+### Evidence and entities investigations in Endpoint
+
+- File page exists.
+  - View details of file.
+  - Download file.
+  - Add indicator (Endpoint will now allow/block in tenant.)
+  - Deep analysis (execute file in secure environment).
+    - Report includes registry modifications made.
+- User page exists.
+  - Account details.
+  - Logged on hosts.
+  - Alerts related to user.
+- Investigate IP Address
+  - IP stats worldwide
+  - DNS names
+  - Alerts related to IP
+  - IP in organisation
+  - Prevalence
+  - Observed devies with the IP.
+- Investigate domain
+  - Basically same as IP.
+
+### Manage automation in Endpoint
+
+- Automations related to:
+  - Automated investigations.
+    - Set certain files to be sent for File Content Analysis.
+    - Enable Memory Content Analysis if we want Endpoint to analyze processes.
+    - Different levels for different device groups.
+  - Enable EDR in block mode (block artifacts/behaviours).
+  - Automatically resolve alerts.
+  - Allow or block file (if Microsoft AV on host and cloud-based protection).
+- Block risky devices from entering company resources with CA.
+  - Requires Endpoint Manager with Intune and Azure AD, host must be W10 OS.
+  - Configure AC in Azure AD, depending on risk level of hosts.
+
+### Configure alerts and detections in Endpoint
+
+- Advanced features
+  - Configure to allow RBAC users Live Response (shell).
+  - Enable unsigned scripts in Live Response.
+  - Enable Custom Network Indicators (allow/block certain IP/domains/URL).
+- We can configure alert notifications (send new alerts to who).
+- Supress alerts is possible.
+- IoC can be setup to allow/alert/block hosts, IPs, files, domains, certificates.
+  - We can also import a ```csv``` IoC list.
+
+### Vulnerability Management in Endpoint
+
+- Real-time discovery sends sensor data on vulnerabilities and security configurations to the dashboard.
+- We can view vulnerabilities and software.
+- Uses data of vulnerabilities exploited in the wild.
+- Real-time monitoring of remediations etc.
+- Different licenses exist. Do more or less.
+- Exploit availability graphs show which devices are most exploitable, viewable in Vulnerable Devices Report.
+- Weaknesses in device dashboard show CVEs.
+- Threat Analytics show recently published threat reports.
+
+### Endpoint Practical
+
+#### Create and manage roles for RBAC
+
+- As Sec admin or global admin access the Defender Portal.
+- Goto Settings > Endpoints > Permissions > Roles
+- Turn on roles.
+- Add Item
+- Enter role name, desc. and permissions
+- Assign role to Security Group.
+
+#### Configure Device Groups
+
+- Defender Portal > Settings > Endpoints > Permissions > Device Group.
+- Add device group.
+- Configure group incl. automation settings.
+- Assign the user group that can access the device group.
+
+## Cloud
+
+- Cloud security two pillars:
+  - Cloud Security Posture Management (CSPM)
+    - Guidance on increasing security, provides visibility of cloud infrastructure.
+  - Cloud Workload Protection (CWP)
+    - Security Alerts.
+    - This is the main idea of Cloud.
+- Cloud can secure multiple Microsoft cloud solutions, Hybrid cloud environment and third part cloud.
+- Can be integrated with Endpoint.
+- Block Bruteforce attacks.
+- To config Cloud:
+  - Search Log Analytics, do some config.
+  - Set up Defender for Cloud, do 'Getting started', do some config.
+  - Onboard on-premise host with Azure Arc. Add a server. Download and run a script on the server.
+
+### Connect Azure assets to Cloud
+
+- Cloud automatically analyzes azure resources to identify vulnerabilities.
+- *Asset Inventory*, detect assets, we can query them with filters.
+  - Uses Azure Resource Graph (ARG) which uses KQL to explore resources.
+- Auto provisioning
+  - Can be enabled in Log Analytics and of extensions.
+  - Basically, it deploys resources and extension automatically, so no manual set-up required.
+  - Policy Add-on for kubernetes is optional.
+- We can also do manual set-up of agent provisioning.
+  - Then we need to install Log Analytics Agent.
+
+### Connect non-Azure assets to Cloud
+
+- We use Azure Arc to manage all resources.
+  - It connects hybrid, on-prem and other non-Microsoft cloud assets to Azure Resource Management.
+  - Hybrid machines, must install Azure Connected Machine Agent.
+  - Log Analytics also good if we want to monitor the OS and workloads of the machine.
+- We can connect AWS to Defender for Cloud.
+  - Azure Arc deploys Log Analytics to AWS instances.
+  - Do some configs, to authenticate AWS Security Center use IAM.
+- We can connect GCP to Defender for Cloud.
+
+### Manage Cloud security posture
+
+- Azure Policy
+  - Rules about specific security conditions.
+  - Mainly *Audit* policies what check for compliance.
+  - *Enforce* policies also exist, enforce secure settings.
+  - We can create custom rules.
+- Azure Policy Initiative
+  - Grouped Azure Policies.
+  - Ensures compliance.
+  - Default Initiative added to all = Azure Security Benchmark.
+- Security recommendation
+  - Result of periodic policy checks.
+  - Provides recommendations on how to remediate.
+  - To remediate a recommendation, press "Fix".
+- Secure Score
+  - A single score reflecting the security posture.
+- We can explore recommendations that improve our security posture.
+- Regulatory compliance dashboard exists.
+  - Many compliance standards exist.
+- Azure Monitor Workbooks
+  - Provide easy report creating and data analysis.
+
+### Cloud workload protections
+
+- Defender for Servers works on Windows and Linux machines.
+  - Does File-integrity monitoring.
+  - Hybrid and multicloud we use Azure Arc instead.
+  - Defender for Servers can be connected with Endpoint.
+- Defender for App Service.
+  - Basically secure applications from attackers.
+- Defender for Storage.
+  - Looks for viruses in storage, suspicious accesses.
+- Defender for SQL.
+  - Scans, detects and helps remediate DB vulnerabilities.
+  - Can detect brute-force, SQL injections, insidier threats.
+  - Defender for open-source DB also exists.
+- Defender for Key Vault.
+  - Safeguards keys and certificates.
+- Defender for Resource Manager.
+  - Enables one to create, update and delete resources in Azure account.
+- Defender for DNS.
+  - Monitors DNS queries.
+- Defender for Containers.
+  - Protects Kubernetes.
+  - Environmental Hardening, Vulnerability Assessment and Run-time threat protection.
+  - Auto provisioning is enables for all containers by default.
+- Defender additional protections.
+  - Protection on network layer.
+  - DDoS protection.
+  - WAF.
+
+### Remediate alerts in Cloud
+
+- Incidents and alerts work the same way as in Endpoint / XDR.
+- Uses TI, Signature detection (ML) and anomaly detection.
+- Logic App, workflow automation and automatic remediation of alerts.
+- We can also supress alerts (supression rules).
+- We can generate threat intelligence reports.
+
+### Cloud Practical
+
+#### Configure auto provisioning
+
+
+## KQL for Sentinel
+
+- Intro to KQL.
+  - list: ```datatable(account: string) [@"account1", @"account2"]```
+  - ```extend``` creates a new column.
+  - ```order by colName1, colName2```
+  - project:
+    - ```project``` = what columns to include.
+    - ```project-away``` = what to exclude.
+    - ```project-keep, project-rename, project-reorder```
+  - summaries:
+    - ```count()```
+    - Has many more, like avg(), max(), percentile(), variance().
+  - ```arg_max(TimeGenerated, *)``` will return most current row.
+    - ```arg_min``` same as above.
+  - ```make_list(), make_set()``` return JSON objects.
+  - ```bin(TimeGenerated, 1d)``` is really good, like zip.
+  - timechart, barchart and scatterchart exists!
+  - ```union``` supports wildcards, we can do ```union Security*``` to union all tables that start with Security.
+  - ```joins``` exist in many different ways.
+  - Extract data
+    - ```extract``` and ```parse``` use regex to match things in unstructured strings.
+    - Some table data contains Dynamic fields, we can access them by calling their key like ```field.key```.
+    - Some logs return JSON objects. We parse them with ```extend object = parse_json(Column)```, and then we can call fields by calling the key like ```object[0].key```
+      - We can also make the entire thing into separete values with ```mv-expand object = parse_json(Column)```, then we can do ```object.key``` instead.
+      - We can also use ```mv-apply object = parse_json(Column) on (wher object.key == "Something")``` to make a condition instead.
+  - We can read external data from other containers with ```externaldata```.
+
+## Configure Sentinel
+
+### Introduction to Sentinel
+
+- Sentinel is a Security Information and Event Management (SIEM).
+- Sentinel is deployed in Azure.
+- Logs arrive from *Data connectors*.
+  - syslogs
+  - Common Event Format (CEF)
+  - Azure
+  - AWS
+- Stored using Log Analytics.
+- Data visualisation with *Workbooks*.
+- *Playbooks* = remediation/investigations etc, (SOAR) capabilities.
+
+### Create and manage Sentinel workspaces
+
+- Create a Log Analytics workspace in Azure, to store the logs.
+  - Specify region, states where logs are stored.
+- 3 impl. options (single workspace, regional workspaces or multi-tenant).
+- Manage Workspaces
+  - Sentinel Workspace manager OR Azure Lighthouse.
+- Sentinel uses RBAC.
+- Data retention from 30 to 730 days.
+- Configure logs:
+  - Analytics Logs: Default.
+  - Basic Logs: Only 8 day retention, basic, less expensive.
+  - Archive Logs: Stored logs, less expensive.
+- Sentinel Workspace Contributor can create workspaces.
+
+### Query logs in Sentinel
+
+- Log Analytics workspace queried with KQL.
+- Contains many different schemas/tables.
+- Useful tables:
+  - SigninLogs: AD signin events.
+  - AuditLogs: Entra ID logs.
+  - CommonSecurityLog: Syslog messages in CEF format.
+- If XDR connector, tables:
+  - Device*: Endpoint events related to devices.
+  - Email*: 365 events, related to email.
+  - Identity*: Related to Identity (AD).
+
+### Watchlists in Sentinel
+
+- Data collection from external data sources.
+- We can group items in watchlists, like high-valued servers.
+- We can create and manage watchlists.
+
+### Threat Intelligence in Sentinel
+
+- Common TI indicator (considered tactical) is called IoC.
+  - Associate URLs, file hashes, IP and other.
+- We can connect common TI platforms as data connectors to Log Analytics.
+- Logs reside in table *ThreatIntelligenceIndiactor*
+
+## Connect logs to Sentinel
+
+### Data Connectors
+
+- Data sources are connected in Sentinel Data Connectors.
+- Data Connector providers:
+  - XDR
+    - Endpoint
+    - Identity
+    - Office 365
+    - Cloud Apps
+  - Azure
+    - Entra ID
+    - Azure Activity
+    - Entra ID Protection
+    - DDoS protection
+    - Defender for IoT
+    - WAF
+    - etc....
+  - Syslog or CEF protocol connectors are available.
+    - Agent must be deployed in Azure VM.
+- We can view connected hosts in Agents in Log Analytics.
+
+### Connect Microsoft Services to Sentinel
+
+- We can connect different services like Office 365, Entra, Entra ID Protection.
+
+### Connect XDR to Sentinel
+
+- Must install XDR Content Hub solution.
+- Then we can activate XDR, Cloud and IoT as data connectors in Sentinel.
+- XDR connects to the SecurityAlert table.
+
+### Connect Windows hosts to Sentinel
+
+- Can be on-premise hosts or Azure VMs
+- An agent must be installed on host:
+  - Windows Security Events via AMA Connector
+    - Requires Azure Arc on non-Azure VMs.
+  - Security Events via Legacy Agent Connector.
+    - ```Microsoft-Windows-Sysmon/Operational``` is the log name.
+  - Sysmon events are stored in Event table.
+
+### Connect CEF logs to Sentinel
+
+- Used to connect Linux VMs or the likes.
+- CEF connector writes to CommonSecurityLog table.
+- CEF connector deploys a Syslog forwarder.
+
+### Connect syslog to Sentinel
+
+- Send syslog with Azure Monitor Agent Data Collection Rule (DCR).
+- Syslog collector writes to Syslog table.
+  - Message data is stored in string field named SyslogMessage.
+  - We need to parse the fields manually with KQL parse ```extract```.
+
+### Connect threat indicators to Sentinel
+
+- We can use TAXII (v 2.0 or 2.1) or TI Platforms Connector, both write data to ThreatIntelligenceIndicator table.
+  - Both use Graph Security API to send data to Sentinel.
+
+## Threat detection with Sentinel analytics
+
+### Analytics rules
+
+- Search for threats by using rules that create alerts.
+- Can use *Fusion engine* (ML) to detect multi-stage attacks.
+  - Alert rules are created using the Fusion template.
+- ML behaviour analytics exist.
+- Scheduled analytic rules: One can customize them.
+- Microsoft security can create incidents based on all alerts generated in Cloud.
+- We can create custom schedule alerts with KQL and assign an automated response with Sentinel Playbook.
+  - Define KQL in section 'Set rule logic'.
+
+### Automation in Sentinel
+
+- Automation enabled through SOAR.
+  - Automation rules = automatic response to multiple analytic rules.
+    - Triggered when incident occurs. Can change status of incident, change severity, assign incdient or tag.
+    - Can also run playbook!
+  - Playbooks = More advanced, response and remediation actions.
+    - Created with Logic Apps!
+
+### Playbooks in Sentinel
+
+- Based on Logic Apps.
+  - Connect to components like external services.
+  - Uses triggers and actions
+  - Trigger = some conditions which if satisfied start an event.
+  - Action = operation that performs a task in the Logic Apps workflow.
+    - Logic App allows for dynamic input to be used.
+  - Pre-defined Playbooks exist from Sentinel GitHub.
+
+### Incident management in Sentinel
+
+- Workflow: Data connectors (Log Analytics agents) -> Events (Log Analytics workspace) -> Analytics rules (KQL) -> Alerts -> Incidents (multiple alerts).
+- Incident entities exist. Some sort of resource tied to an incident.
+- An event is evidence.
+
+### Sentinel behaviour analytics
+
+- Uses MITRE and other things to sift through logs to deduce possible alerts.
+- Entities = IP/user accounts/hosts (data elements).
+- Anomaly detection.
+- Insights in the investigation graph show Entity Behavior information.
+- Activities are shown in the Entity page timeline.
+
+### Data normalisation in Sentinel
+
+- ASIM transforms Sentinel logs to user-friendly format.
+- ASIM Parser:
+  - Built with KQL.
+  - Parses at query time.
+  - Unifying parsers use source-specific parsers, unique to each schema.
+  - We can replace values in KQL query with parameter names.
+    - We can then assign the parameter names expected values.
+  - We can create our own ASIM parser, and as such standardize logs collected by various devices.
+- We can also parse data at ingestion time.
+  - Data is then stored in the parsed format.
+
+### Query, visualize and monitor data in Sentinel
+
+- Log Analytics stores logs. We can do KQL queries.
+- Use saved query -> Query explorer page.
+- Create analytics rule -> Microsoft Sentinel Alert.
+- KQL is also called *Azure Data Explorer*.
+- Workbook templates exist.
+  - Workbook uses Markdown for text visualisation.
+  - To display data in table -> Grid visualisation.
+- Sentinel can be connected to GitHub and Azure DevOps repositories.
+- Content Hub accepts Parsers.
+- Maximum of 5 repos can be connected to Sentinel.
+
+## Sentinel Threat Hunting
+
+### Explain threat hunting
+
+- Threat hunting = finding threats that have not been detected.
+- Threat hunting starts with a well-structured Hypothesis.
+- Threat hunting needs a throughly documented process, for repeatability.
+- MITRE ATT&CK exists in Threat Management in Sentinel.
+
+### Threat Hunting in Sentinel
+
+- Hunting page in Sentinel has built-in KQL queries and ordered by MITRE techniques.
+- One can bookmark KQL query results under Hunting > Bookmarks tab.
+- Livestream = query on live data.
+- Search jobs
+  - Results in Log Analytics, with *_SRCH suffix.
+  - Searches analytics log and basic log asynchronously.
+- We can restore archived and historical logs.
+  - has *_RST suffix.
+
+### Threat Hunting with Notebooks
+
+- Logs exist in Log Analytics.
+- Sentinel uses API to access the data.
+- External libraries ```Kqlmagic``` and ```msticpy``` (python) exist for external contact with the API.
+  - <https://msticpy.readthedocs.io/en/latest/>
+
 # SC-200 Intended Learning Outcomes (from <https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/sc-200>)
 
 ## Manage a Security Operations Environment (20–25%)
