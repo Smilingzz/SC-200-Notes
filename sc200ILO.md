@@ -1,4 +1,4 @@
-# SC-200
+# SC-200 - Notes by Alexander Söderhäll
 
 ## List of Abbreviations
 
